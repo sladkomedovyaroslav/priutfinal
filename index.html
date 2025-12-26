@@ -60,23 +60,17 @@
 
   <div class="faq-item">
     <button class="faq-question">Как взять животное из приюта?</button>
-    <div class="faq-answer">
-      Нужно оставить заявку или приехать к нам лично.
-    </div>
+    <div class="faq-answer">Нужно оставить заявку или приехать к нам лично.</div>
   </div>
 
   <div class="faq-item">
     <button class="faq-question">Можно ли помочь приюту?</button>
-    <div class="faq-answer">
-      Да, мы принимаем пожертвования и помощь волонтёров.
-    </div>
+    <div class="faq-answer">Да, мы принимаем пожертвования и помощь волонтёров.</div>
   </div>
 
   <div class="faq-item">
     <button class="faq-question">Животные отдаются бесплатно?</button>
-    <div class="faq-answer">
-      Да, по договору ответственного содержания.
-    </div>
+    <div class="faq-answer">Да, по договору ответственного содержания.</div>
   </div>
 </section>
 
@@ -107,10 +101,22 @@
 <!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-content">
-    <h2>Связаться с приютом</h2>
-    <input type="text" placeholder="Ваше имя">
-    <input type="tel" placeholder="Телефон">
-    <button>Отправить</button>
+    <h2>Подписка на рассылку</h2>
+
+    <!-- FORMCARRY FORM -->
+    <form action="https://formcarry.com/s/ZDaSwBkor6Z" method="POST">
+      <input type="email" name="email" placeholder="Ваш Email" required>
+
+      <input type="hidden" name="message"
+        value="Мы увидели ваш отклик на сайте приюта «Добрые лапы». Приходите к нам в приют!">
+
+      <button type="submit">Отправить</button>
+    </form>
+
+    <p style="margin-top:15px; color:green;">
+      После отправки вы получите письмо на указанную почту
+    </p>
+
     <button class="close" id="closeModal">Закрыть</button>
   </div>
 </div>
@@ -121,13 +127,8 @@
   burger.onclick = () => menu.classList.toggle('open');
 
   const modal = document.getElementById('modal');
-  document.getElementById('openModal').onclick = () => {
-    modal.style.display = 'flex';
-    modal.style.opacity = '1';
-  };
-  document.getElementById('closeModal').onclick = () => {
-    modal.style.display = 'none';
-  };
+  document.getElementById('openModal').onclick = () => modal.style.display = 'flex';
+  document.getElementById('closeModal').onclick = () => modal.style.display = 'none';
 
   document.querySelectorAll('.faq-question').forEach(q => {
     q.onclick = () => q.parentElement.classList.toggle('open');
@@ -135,4 +136,5 @@
 </script>
 
 </body>
+</html>
 </html>
