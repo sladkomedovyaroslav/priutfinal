@@ -1,1 +1,138 @@
-<INDEX_PLACEHOLDER>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Приют «Добрые лапы»</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <video class="video-bg" autoplay muted loop>
+    <source src="video.mp4" type="video/mp4">
+  </video>
+
+  <div class="header-content">
+    <h1>Подари дом другу 🐾</h1>
+    <p>Приют «Добрые лапы» помогает животным найти семью</p>
+    <button id="openModal">Хочу помочь</button>
+  </div>
+
+  <div class="burger" id="burger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="#pets">Наши подопечные</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contacts">Контакты</a>
+</nav>
+
+<!-- PETS -->
+<section class="pets" id="pets">
+  <h2>Наши подопечные</h2>
+
+  <div class="pet-list">
+    <a href="bobik.html" target="_blank" class="pet-card">
+      <img src="images/bobik.jpg" alt="Бобик">
+      <span>🐶 Бобик</span>
+    </a>
+
+    <a href="murka.html" target="_blank" class="pet-card">
+      <img src="images/murka.jpg" alt="Мурка">
+      <span>🐱 Мурка</span>
+    </a>
+
+    <a href="rex.html" target="_blank" class="pet-card">
+      <img src="images/rex.jpg" alt="Рекс">
+      <span>🐕 Рекс</span>
+    </a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <h2>Часто задаваемые вопросы</h2>
+
+  <div class="faq-item">
+    <button class="faq-question">Как взять животное из приюта?</button>
+    <div class="faq-answer">
+      Нужно оставить заявку или приехать к нам лично.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Можно ли помочь приюту?</button>
+    <div class="faq-answer">
+      Да, мы принимаем пожертвования и помощь волонтёров.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Животные отдаются бесплатно?</button>
+    <div class="faq-answer">
+      Да, по договору ответственного содержания.
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<footer class="contacts" id="contacts">
+  <h2>Контактная информация</h2>
+
+  <div class="contacts-grid">
+    <div>
+      <strong>Адрес</strong>
+      <p>г. Москва, ул. Добрая, 12</p>
+    </div>
+    <div>
+      <strong>Телефон</strong>
+      <p>+7 (999) 123-45-67</p>
+    </div>
+    <div>
+      <strong>Email</strong>
+      <p>dobryelapy@mail.ru</p>
+    </div>
+    <div>
+      <strong>Часы работы</strong>
+      <p>10:00 – 19:00</p>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h2>Связаться с приютом</h2>
+    <input type="text" placeholder="Ваше имя">
+    <input type="tel" placeholder="Телефон">
+    <button>Отправить</button>
+    <button class="close" id="closeModal">Закрыть</button>
+  </div>
+</div>
+
+<script>
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('mobileMenu');
+  burger.onclick = () => menu.classList.toggle('open');
+
+  const modal = document.getElementById('modal');
+  document.getElementById('openModal').onclick = () => {
+    modal.style.display = 'flex';
+    modal.style.opacity = '1';
+  };
+  document.getElementById('closeModal').onclick = () => {
+    modal.style.display = 'none';
+  };
+
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.onclick = () => q.parentElement.classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>
