@@ -5,6 +5,32 @@
   <title>Приют «Добрые лапы»</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { font-family: Montserrat, sans-serif; margin:0; padding:0; }
+    .header { position: relative; text-align: center; color: white; }
+    .header-content { position: absolute; top: 50%; left:50%; transform: translate(-50%, -50%); }
+    .video-bg { width:100%; height:auto; display:block; }
+    .burger { position:absolute; top:20px; right:20px; cursor:pointer; }
+    .burger span { display:block; width:25px; height:3px; margin:5px; background:#fff; }
+    .mobile-menu { display:none; flex-direction: column; background:#333; position:absolute; top:60px; width:100%; text-align:center; }
+    .mobile-menu.open { display:flex; }
+    .mobile-menu a { color:#fff; padding:15px; text-decoration:none; border-bottom:1px solid #444; }
+    .pets, .faq, .contacts { padding:40px 20px; text-align:center; }
+    .pet-list { display:flex; justify-content:center; flex-wrap:wrap; gap:20px; }
+    .pet-card { display:block; width:200px; text-decoration:none; color:#000; }
+    .pet-card img { width:100%; border-radius:20px; }
+    .faq-item { margin:20px 0; text-align:left; max-width:600px; margin-left:auto; margin-right:auto; }
+    .faq-answer { display:none; padding:10px; border-left:3px solid #333; margin-top:5px; }
+    .faq-item.open .faq-answer { display:block; }
+    .contacts-grid { display:flex; justify-content:center; flex-wrap:wrap; gap:20px; }
+    .contacts-grid div { min-width:200px; }
+    /* Модальное окно */
+    .modal { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.6); justify-content:center; align-items:center; }
+    .modal-content { background:#fff; padding:30px; border-radius:20px; max-width:400px; width:90%; text-align:center; }
+    .modal-content input, .modal-content button { width:100%; margin:10px 0; padding:10px; font-size:16px; }
+    .close { background:#ccc; }
+    #successMessage { display:none; color:green; margin-top:10px; }
+  </style>
 </head>
 <body>
 
@@ -35,18 +61,15 @@
 <!-- PETS -->
 <section class="pets" id="pets">
   <h2>Наши подопечные</h2>
-
   <div class="pet-list">
     <a href="bobik.html" target="_blank" class="pet-card">
       <img src="images/bobik.jpg" alt="Бобик">
       <span>🐶 Бобик</span>
     </a>
-
     <a href="murka.html" target="_blank" class="pet-card">
       <img src="images/murka.jpg" alt="Мурка">
       <span>🐱 Мурка</span>
     </a>
-
     <a href="rex.html" target="_blank" class="pet-card">
       <img src="images/rex.jpg" alt="Рекс">
       <span>🐕 Рекс</span>
@@ -57,17 +80,14 @@
 <!-- FAQ -->
 <section class="faq" id="faq">
   <h2>Часто задаваемые вопросы</h2>
-
   <div class="faq-item">
     <button class="faq-question">Как взять животное из приюта?</button>
     <div class="faq-answer">Нужно оставить заявку или приехать к нам лично.</div>
   </div>
-
   <div class="faq-item">
     <button class="faq-question">Можно ли помочь приюту?</button>
     <div class="faq-answer">Да, мы принимаем пожертвования и помощь волонтёров.</div>
   </div>
-
   <div class="faq-item">
     <button class="faq-question">Животные отдаются бесплатно?</button>
     <div class="faq-answer">Да, по договору ответственного содержания.</div>
@@ -77,64 +97,58 @@
 <!-- CONTACTS -->
 <footer class="contacts" id="contacts">
   <h2>Контактная информация</h2>
-
   <div class="contacts-grid">
-    <div>
-      <strong>Адрес</strong>
-      <p>г. Москва, ул. Добрая, 12</p>
-    </div>
-    <div>
-      <strong>Телефон</strong>
-      <p>+7 (999) 123-45-67</p>
-    </div>
-    <div>
-      <strong>Email</strong>
-      <p>dobryelapy@mail.ru</p>
-    </div>
-    <div>
-      <strong>Часы работы</strong>
-      <p>10:00 – 19:00</p>
-    </div>
+    <div><strong>Адрес</strong><p>г. Москва, ул. Добрая, 12</p></div>
+    <div><strong>Телефон</strong><p>+7 (999) 123-45-67</p></div>
+    <div><strong>Email</strong><p>dobryelapy@mail.ru</p></div>
+    <div><strong>Часы работы</strong><p>10:00 – 19:00</p></div>
   </div>
 </footer>
 
 <!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-content">
-    <h2>Подписка на рассылку</h2>
-
-    <!-- FORMCARRY FORM -->
-    <form action="https://formcarry.com/s/ZDaSwBkor6Z" method="POST">
-      <input type="email" name="email" placeholder="Ваш Email" required>
-
-      <input type="hidden" name="message"
-        value="Мы увидели ваш отклик на сайте приюта «Добрые лапы». Приходите к нам в приют!">
-
+    <h2>Связаться с приютом</h2>
+    <form id="contactForm" action="https://formcarry.com/s/ZDaSwBkor6Z" method="POST">
+      <input type="text" name="name" placeholder="Ваше имя" required>
+      <input type="text" name="surname" placeholder="Ваша фамилия" required>
+      <input type="email" name="email" placeholder="Email" required>
       <button type="submit">Отправить</button>
+      <button type="button" class="close" id="closeModal">Закрыть</button>
     </form>
-
-    <p style="margin-top:15px; color:green;">
-      После отправки вы получите письмо на указанную почту
-    </p>
-
-    <button class="close" id="closeModal">Закрыть</button>
+    <p id="successMessage">Успешно отправлено!</p>
   </div>
 </div>
 
 <script>
-  const burger = document.getElementById('burger');
-  const menu = document.getElementById('mobileMenu');
-  burger.onclick = () => menu.classList.toggle('open');
+const burger = document.getElementById('burger');
+const menu = document.getElementById('mobileMenu');
+burger.onclick = () => menu.classList.toggle('open');
 
-  const modal = document.getElementById('modal');
-  document.getElementById('openModal').onclick = () => modal.style.display = 'flex';
-  document.getElementById('closeModal').onclick = () => modal.style.display = 'none';
+const modal = document.getElementById('modal');
+document.getElementById('openModal').onclick = () => modal.style.display='flex';
+document.getElementById('closeModal').onclick = () => modal.style.display='none';
 
-  document.querySelectorAll('.faq-question').forEach(q => {
-    q.onclick = () => q.parentElement.classList.toggle('open');
-  });
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.onclick = () => q.parentElement.classList.toggle('open');
+});
+
+// AJAX submit формы
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  const formData = new FormData(form);
+  fetch(form.action, { method:'POST', body:formData, headers:{ 'Accept':'application/json' } })
+    .then(response => {
+      if(response.ok){
+        document.getElementById('successMessage').style.display='block';
+        form.reset();
+      } else {
+        alert('Ошибка при отправке. Попробуйте позже.');
+      }
+    }).catch(() => alert('Ошибка сети. Попробуйте позже.'));
+});
 </script>
 
 </body>
-</html>
 </html>
